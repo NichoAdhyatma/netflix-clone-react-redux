@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useState, useEffect } from "react";
 import "./Banner.css";
 import axios from "../api/axios";
@@ -6,20 +6,21 @@ import api from "../api/request";
 
 export default function Banner() {
   const [movie, setMovie] = useState([]);
-  const [title, setTitle] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(api.fetchNetflix);
-      setMovie(request.data.results[2]);
-      return request;
-    }
-    fetchData();
+  const fetchData = useCallback(async () => {
+    const request = await axios.get(api.fetchTrending);
+    setMovie(request.data.results[Math.floor(Math.random() * (19 - 0) + 0)]);
+    return request;
   }, []);
 
-  console.log(Math.floor(Math.random()))
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
-  console.log(movie);
+  const truncate = (string, n) => {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  };
+
   return (
     <header
       className="banner"
@@ -29,12 +30,16 @@ export default function Banner() {
     >
       <div className="banner-overlay"></div>
       <div className="banner-content">
-        <h1 className="banner-title">{movie.name}</h1>
+        <h1 className="banner-title">{movie.title}</h1>
         <div className="banner-buttons">
           <button className="banner-button">Play</button>
-          <button className="banner-button">My List</button>
+          <button className="banner-button" onClick={fetchData}>
+            Generate New Movie
+          </button>
         </div>
-        <div className="banner-description">{movie.overview}</div>
+        <div className="banner-description">
+          {truncate(movie.overview, 200)}
+        </div>
       </div>
       <div className="banner-fadeBottom"></div>
     </header>
