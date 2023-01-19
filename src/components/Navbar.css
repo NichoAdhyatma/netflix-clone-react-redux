@@ -1,0 +1,38 @@
+.navbar {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 99;
+  padding: 0 1rem;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+
+.nav-black {
+  background-color: #111;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  height: 6rem;
+}
+
+.logo {
+  width: 14rem;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 3rem;
+  cursor: pointer;
+  margin-right: 5rem;
+}
