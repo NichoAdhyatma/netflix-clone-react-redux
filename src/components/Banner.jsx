@@ -25,12 +25,12 @@ export default function Banner() {
     <header
       className="banner"
       style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
       }}
     >
       <div className="banner-overlay"></div>
       <div className="banner-content">
-        <h1 className="banner-title">{movie.title}</h1>
+        <h1 className="banner-title">{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className="banner-buttons">
           <button className="banner-button">Play</button>
           <button className="banner-button" onClick={fetchData}>
@@ -38,7 +38,7 @@ export default function Banner() {
           </button>
         </div>
         <div className="banner-description">
-          {truncate(movie.overview, 200)}
+          {truncate(movie?.overview, 200)}
         </div>
       </div>
       <div className="banner-fadeBottom"></div>

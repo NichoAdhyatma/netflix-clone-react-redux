@@ -1,0 +1,38 @@
+.row {
+  color: white;
+  padding: 1.6rem;
+}
+
+.row-posters {
+  display: flex;
+  gap: 0.6rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 1rem;
+}
+
+.row-posters::-webkit-scrollbar {
+  display: none;
+}
+.row-poster {
+  max-height: 10rem;
+  object-fit: contain;
+  transition: transform 450ms;
+  -webkit-transition: transform 450ms;
+  -moz-transition: transform 450ms;
+  -ms-transition: transform 450ms;
+  -o-transition: transform 450ms;
+}
+
+.row-poster:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  cursor: pointer;
+}
+
+.row-posterLarge {
+  max-height: 15rem;
+}
